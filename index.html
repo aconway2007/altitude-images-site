@@ -450,7 +450,11 @@
     .bento-cell {
       position: relative;
       overflow: hidden;
-      cursor: default;
+      cursor: pointer;
+    }
+    .bento-cell:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: -2px;
     }
     /* Wide cell spans 2 columns */
     .bento-cell.wide { grid-column: span 2; }
@@ -820,6 +824,63 @@
     }
     a.contact-item:hover .ci-val { color: var(--gold); }
 
+    /* ─── LIGHTBOX ── */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(8,14,28,0.94);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+      padding: 64px 24px;
+    }
+    #lightbox.open { display: flex; }
+
+    .lightbox-figure {
+      position: relative;
+      max-width: min(90vw, 1100px);
+      max-height: calc(100vh - 128px);
+    }
+    .lightbox-figure img {
+      max-width: 100%;
+      max-height: calc(100vh - 128px);
+      width: auto;
+      border: 1px solid var(--gold-border);
+    }
+    .lightbox-cat {
+      position: absolute;
+      top: -30px;
+      left: 0;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(232,160,32,0.1);
+      border: 1px solid var(--gold-border);
+      border-radius: 3px;
+      color: var(--text);
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      transition: background var(--ease), color var(--ease);
+    }
+    .lightbox-close:hover { background: var(--gold); color: var(--bg); }
+
     /* ─── FOOTER ── */
     footer {
       border-top: 1px solid var(--gold-border);
@@ -1027,7 +1088,7 @@
       </div>
 
       <div class="bento">
-        <div class="bento-cell wide reveal d1">
+        <div class="bento-cell wide reveal d1" tabindex="0" role="button" aria-label="View larger photo">
           <img src="realestate.jpg" alt="Aerial real estate photography" loading="lazy">
           <div class="bento-info">
             <div class="bento-cat">Most Popular</div>
@@ -1035,7 +1096,7 @@
           </div>
         </div>
 
-        <div class="bento-cell reveal d2">
+        <div class="bento-cell reveal d2" tabindex="0" role="button" aria-label="View larger photo">
           <img src="events.jpg" alt="Event drone videography" loading="lazy">
           <div class="bento-info">
             <div class="bento-cat">Year-Round</div>
@@ -1043,7 +1104,7 @@
           </div>
         </div>
 
-        <div class="bento-cell reveal d1">
+        <div class="bento-cell reveal d1" tabindex="0" role="button" aria-label="View larger photo">
           <img src="agriculture.jpg" alt="Agriculture aerial survey" loading="lazy">
           <div class="bento-info">
             <div class="bento-cat">Seasonal</div>
@@ -1051,7 +1112,7 @@
           </div>
         </div>
 
-        <div class="bento-cell reveal d2">
+        <div class="bento-cell reveal d2" tabindex="0" role="button" aria-label="View larger photo">
           <img src="construction.jpg" alt="Construction site aerial progress" loading="lazy">
           <div class="bento-info">
             <div class="bento-cat">Ongoing Projects</div>
@@ -1059,7 +1120,7 @@
           </div>
         </div>
 
-        <div class="bento-cell reveal d3">
+        <div class="bento-cell reveal d3" tabindex="0" role="button" aria-label="View larger photo">
           <img src="marine.jpg" alt="Marine and waterway aerial photography" loading="lazy">
           <div class="bento-info">
             <div class="bento-cat">On the Water</div>
@@ -1069,6 +1130,15 @@
       </div>
     </div>
   </section>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Photo preview" aria-hidden="true">
+    <div class="lightbox-figure">
+      <div class="lightbox-cat" id="lightbox-cat"></div>
+      <button class="lightbox-close" id="lightbox-close" aria-label="Close preview">&times;</button>
+      <img id="lightbox-img" src="" alt="">
+    </div>
+  </div>
 
   <!-- HOW IT WORKS -->
   <section id="process">
@@ -1262,6 +1332,52 @@
         const top = t.getBoundingClientRect().top + window.scrollY - 68;
         window.scrollTo({ top, behavior: 'smooth' });
       });
+    });
+
+    /* Lightbox */
+    const lightbox     = document.getElementById('lightbox');
+    const lightboxImg  = document.getElementById('lightbox-img');
+    const lightboxCat  = document.getElementById('lightbox-cat');
+    const lightboxClose = document.getElementById('lightbox-close');
+    let lastFocused = null;
+
+    function openLightbox(cell) {
+      const img = cell.querySelector('img');
+      const name = cell.querySelector('.bento-name');
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightboxCat.textContent = name ? name.textContent : '';
+      lastFocused = document.activeElement;
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      lightboxClose.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      lightboxImg.src = '';
+      if (lastFocused) lastFocused.focus();
+    }
+
+    document.querySelectorAll('.bento-cell').forEach(cell => {
+      cell.addEventListener('click', () => openLightbox(cell));
+      cell.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openLightbox(cell);
+        }
+      });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
     });
   </script>
 </body>
