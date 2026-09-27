@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Session - Altitude Images LLC | Mount Vernon &amp; Oxford, OH</title>
+  <meta name="description" content="Schedule an aerial drone photography or videography session with Altitude Images. Pick your package and an open time. Based in Mount Vernon and Oxford, Ohio.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── Tokens ── */
+    :root {
+      --bg:         #080E1C;
+      --surface:    #0F1828;
+      --surface-2:  #141F35;
+      --gold:       #E8A020;
+      --gold-dim:   rgba(232,160,32,0.15);
+      --gold-border:rgba(232,160,32,0.22);
+      --text:       #F0EDE6;
+      --muted:      #7A8FA8;
+      --display:    'Bebas Neue', sans-serif;
+      --body:       'Inter', sans-serif;
+      --nav-h:      68px;
+      --max:        1160px;
+      --ease:       0.3s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ─── NAV ── */
+    #nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      background: rgba(8,14,28,0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 var(--gold-border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .nav-logo {
+      font-family: var(--display);
+      font-size: 21px;
+      letter-spacing: 0.07em;
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      transition: color var(--ease);
+    }
+    .nav-links a:hover,
+    .nav-links a[aria-current="page"] { color: var(--text); }
+
+    /* Hamburger */
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      width: 30px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    .nav-burger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 0.26s ease, opacity 0.26s ease;
+    }
+    .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      inset: var(--nav-h) 0 auto;
+      z-index: 99;
+      background: rgba(8,14,28,0.98);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--gold-border);
+      padding: 28px 32px 36px;
+    }
+    .nav-drawer.open { display: block; }
+    .nav-drawer ul { list-style: none; }
+    .nav-drawer ul li + li { margin-top: 2px; }
+    .nav-drawer ul a {
+      display: block;
+      font-family: var(--display);
+      font-size: 32px;
+      letter-spacing: 0.03em;
+      color: var(--text);
+      padding: 8px 0;
+      transition: color var(--ease);
+    }
+    .nav-drawer ul a:hover { color: var(--gold); }
+
+    /* ─── BOOKING ── */
+    #book {
+      padding: calc(var(--nav-h) + 64px) 0 96px;
+    }
+
+    .book-back {
+      display: flex;
+      width: fit-content;
+      align-items: center;
+      gap: 8px;
+      font-size: 11.5px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 28px;
+      transition: color var(--ease);
+    }
+    .book-back:hover { color: var(--gold); }
+
+    .book-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .book-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.6;
+    }
+
+    .book-h1 {
+      font-family: var(--display);
+      font-size: clamp(52px, 7vw, 84px);
+      line-height: 0.95;
+      letter-spacing: 0.01em;
+      margin-bottom: 16px;
+    }
+    .book-h1 .g { color: var(--gold); }
+
+    .book-sub {
+      font-size: 15.5px;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 48px;
+    }
+
+    .book-grid {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* Package picker */
+    .step-label {
+      display: block;
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .pkgs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .pkg {
+      text-align: left;
+      font-family: var(--body);
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 4px;
+      padding: 18px 20px;
+      cursor: pointer;
+      transition: border-color var(--ease), background var(--ease);
+    }
+    .pkg:hover { border-color: var(--gold-border); }
+    .pkg[aria-checked="true"] {
+      border-color: var(--gold);
+      background: var(--surface-2);
+    }
+    .pkg:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+    .pkg-name {
+      display: block;
+      font-family: var(--display);
+      font-size: 22px;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+    }
+    .pkg-price {
+      display: block;
+      font-size: 13px;
+      color: var(--gold);
+      font-weight: 500;
+      margin-top: 4px;
+    }
+    .pkg-desc {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 6px;
+      line-height: 1.5;
+    }
+
+    /* Scheduler */
+    .scheduler {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .calendly-inline-widget {
+      min-width: 320px;
+      height: 720px;
+    }
+
+    .scheduler-empty {
+      padding: 56px 32px;
+      text-align: center;
+    }
+    .scheduler-empty h2 {
+      font-family: var(--display);
+      font-size: 30px;
+      letter-spacing: 0.03em;
+      margin-bottom: 10px;
+    }
+    .scheduler-empty p {
+      font-size: 14.5px;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 380px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Sidebar */
+    .book-aside {
+      position: sticky;
+      top: calc(var(--nav-h) + 24px);
+    }
+
+    .aside-card {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 4px;
+      padding: 24px;
+    }
+    .aside-card + .aside-card { margin-top: 16px; }
+
+    .aside-title {
+      font-family: var(--display);
+      font-size: 22px;
+      letter-spacing: 0.04em;
+      margin-bottom: 12px;
+    }
+
+    .aside-list {
+      list-style: none;
+    }
+    .aside-list li {
+      position: relative;
+      font-size: 13.5px;
+      color: var(--muted);
+      padding-left: 18px;
+      line-height: 1.6;
+    }
+    .aside-list li + li { margin-top: 8px; }
+    .aside-list li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 9px;
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: border-color var(--ease);
+    }
+    .contact-item:last-child { border-bottom: none; padding-bottom: 0; }
+    a.contact-item:hover { border-color: var(--gold-border); }
+
+    .ci-icon {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gold-dim);
+      border: 1px solid var(--gold-border);
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .ci-icon svg { fill: var(--gold); }
+
+    .ci-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1px;
+    }
+    .ci-val {
+      font-size: 14.5px;
+      color: var(--text);
+      transition: color var(--ease);
+      overflow-wrap: anywhere;
+    }
+    a.contact-item:hover .ci-val { color: var(--gold); }
+
+    /* ─── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--gold-border);
+      padding: 22px 0;
+      background: var(--surface);
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .footer-left {
+      font-family: var(--display);
+      font-size: 16px;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+    }
+    .footer-right {
+      font-size: 11.5px;
+      color: var(--muted);
+      opacity: 0.55;
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .book-grid { grid-template-columns: 1fr; }
+      .book-aside { position: static; }
+    }
+
+    @media (max-width: 768px) {
+      .wrap, .nav-inner { padding: 0 20px; }
+      .nav-links  { display: none; }
+      .nav-burger { display: flex; }
+
+      #book { padding-top: calc(var(--nav-h) + 40px); }
+      .pkgs { grid-template-columns: 1fr; }
+      .calendly-inline-widget { height: 1000px; }
+
+      .footer-inner { flex-direction: column; text-align: center; gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="../" class="nav-logo">ALTITUDE IMAGES</a>
+
+      <ul class="nav-links">
+        <li><a href="../#services">Services</a></li>
+        <li><a href="../#process">Process</a></li>
+        <li><a href="../#pricing">Pricing</a></li>
+        <li><a href="./" aria-current="page">Book</a></li>
+      </ul>
+
+      <button class="nav-burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-drawer" id="drawer" aria-hidden="true">
+    <ul>
+      <li><a href="../#services" class="drawer-link">Services</a></li>
+      <li><a href="../#process"  class="drawer-link">Process</a></li>
+      <li><a href="../#pricing"  class="drawer-link">Pricing</a></li>
+      <li><a href="../#contact"  class="drawer-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- BOOKING -->
+  <main id="book">
+    <div class="wrap">
+      <a href="../" class="book-back">&larr; Back to home</a>
+
+      <span class="book-eyebrow">Book a Session</span>
+      <h1 class="book-h1">SCHEDULE YOUR <span class="g">FLIGHT</span></h1>
+      <p class="book-sub">Choose a package, then pick a date and time that works for you. We'll confirm your location and flight details within 24 hours.</p>
+
+      <div class="book-grid">
+        <div>
+          <span class="step-label" id="pkg-label">1 &nbsp;/&nbsp; Choose a package</span>
+          <div class="pkgs" role="radiogroup" aria-labelledby="pkg-label">
+            <button type="button" class="pkg" role="radio" aria-checked="false" data-pkg="photo" data-name="Photo package ($149)">
+              <span class="pkg-name">PHOTO</span>
+              <span class="pkg-price">$149</span>
+              <span class="pkg-desc">10 high-res aerial stills</span>
+            </button>
+            <button type="button" class="pkg" role="radio" aria-checked="false" data-pkg="video" data-name="Video package ($199)">
+              <span class="pkg-name">VIDEO</span>
+              <span class="pkg-price">$199</span>
+              <span class="pkg-desc">5 cinematic clips, montage add-on available</span>
+            </button>
+            <button type="button" class="pkg" role="radio" aria-checked="false" data-pkg="combo" data-name="Photo + Video package ($249)">
+              <span class="pkg-name">PHOTO + VIDEO</span>
+              <span class="pkg-price">$249 &middot; Best value</span>
+              <span class="pkg-desc">Full photo and video session</span>
+            </button>
+          </div>
+
+          <span class="step-label">2 &nbsp;/&nbsp; Pick a date &amp; time</span>
+          <div class="scheduler" id="scheduler"></div>
+        </div>
+
+        <aside class="book-aside">
+          <div class="aside-card">
+            <h2 class="aside-title">WHAT HAPPENS NEXT</h2>
+            <ul class="aside-list">
+              <li>We confirm your date, location, and shot list within 24 hours.</li>
+              <li>We check airspace and weather before the flight.</li>
+              <li>Your edited photos and video arrive within 48 hours of the shoot.</li>
+            </ul>
+          </div>
+
+          <div class="aside-card">
+            <h2 class="aside-title">RATHER TALK FIRST?</h2>
+            <a href="tel:7405049980" class="contact-item">
+              <div class="ci-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.38 2.33.58 3.57.58a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C9.61 21 3 14.39 3 6a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.58 3.57a1 1 0 0 1-.25 1.02l-2.21 2.2z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="ci-label">Phone / Text</div>
+                <div class="ci-val">740-504-9980</div>
+              </div>
+            </a>
+            <a href="mailto:andrew@altitudeimagesllc.com" class="contact-item">
+              <div class="ci-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="ci-label">Email</div>
+                <div class="ci-val">andrew@altitudeimagesllc.com</div>
+              </div>
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <span class="footer-left">ALTITUDE IMAGES</span>
+        <span class="footer-right">&copy; 2026 Altitude Images LLC - Mount Vernon &amp; Oxford, OH - FAA Part 107 Certified</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://assets.calendly.com/assets/external/widget.js"></script>
+  <script>
+    /* Your Calendly scheduling link, e.g. https://calendly.com/altitudeimages/drone-session */
+    const CALENDLY_URL = 'https://calendly.com/altitudeimages/drone-session';
+
+    /* Hamburger */
+    const burger = document.getElementById('burger');
+    const drawer = document.getElementById('drawer');
+
+    function closeDrawer() {
+      burger.classList.remove('open');
+      drawer.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    burger.addEventListener('click', () => {
+      const open = burger.classList.toggle('open');
+      drawer.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', String(open));
+      drawer.setAttribute('aria-hidden', String(!open));
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    document.querySelectorAll('.drawer-link').forEach(l => l.addEventListener('click', closeDrawer));
+
+    /* Package picker + Calendly embed */
+    const scheduler = document.getElementById('scheduler');
+    const pkgButtons = document.querySelectorAll('.pkg');
+
+    function renderScheduler(pkgName) {
+      scheduler.innerHTML = '';
+
+      if (!CALENDLY_URL || !window.Calendly) {
+        scheduler.innerHTML =
+          '<div class="scheduler-empty">' +
+            '<h2>ONLINE SCHEDULING COMING SOON</h2>' +
+            '<p>In the meantime, text or call 740-504-9980 or email andrew@altitudeimagesllc.com and we\'ll get your flight on the calendar.</p>' +
+          '</div>';
+        return;
+      }
+
+      const url = new URL(CALENDLY_URL);
+      url.searchParams.set('hide_gdpr_banner', '1');
+      url.searchParams.set('background_color', '0f1828');
+      url.searchParams.set('text_color', 'f0ede6');
+      url.searchParams.set('primary_color', 'e8a020');
+
+      const widget = document.createElement('div');
+      widget.className = 'calendly-inline-widget';
+      scheduler.appendChild(widget);
+      /* Prefills the first custom question on the Calendly event, if one exists.
+         Appended by hand so spaces encode as %20 (URLSearchParams uses "+", which Calendly shows literally). */
+      let src = url.toString();
+      if (pkgName) src += '&a1=' + encodeURIComponent(pkgName);
+      Calendly.initInlineWidget({ url: src, parentElement: widget });
+    }
+
+    function selectPackage(btn) {
+      pkgButtons.forEach(b => b.setAttribute('aria-checked', String(b === btn)));
+      renderScheduler(btn ? btn.dataset.name : '');
+      const params = new URLSearchParams(location.search);
+      if (btn) params.set('package', btn.dataset.pkg);
+      history.replaceState(null, '', params.toString() ? '?' + params : location.pathname);
+    }
+
+    pkgButtons.forEach(btn => btn.addEventListener('click', () => selectPackage(btn)));
+
+    const initial = new URLSearchParams(location.search).get('package');
+    const initialBtn = [...pkgButtons].find(b => b.dataset.pkg === initial);
+    if (initialBtn) selectPackage(initialBtn);
+    else renderScheduler('');
+  </script>
+</body>
+</html>
