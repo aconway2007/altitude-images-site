@@ -769,6 +769,8 @@
       margin-bottom: 24px;
     }
 
+    .contact-btn { margin-bottom: 28px; }
+
     .contact-cert {
       font-size: 11px;
       font-weight: 500;
@@ -792,7 +794,7 @@
       border-bottom: 1px solid rgba(255,255,255,0.05);
       transition: border-color var(--ease);
     }
-    .contact-item:first-child { border-top: 1px solid rgba(255,255,255,0.05); }
+    .contact-eyebrow + .contact-item { border-top: 1px solid rgba(255,255,255,0.05); }
     a.contact-item:hover { border-color: var(--gold-border); }
 
     .ci-icon {
@@ -1226,13 +1228,15 @@
     <div class="wrap">
       <div class="contact-grid">
         <div class="reveal">
-          <span class="contact-eyebrow">Get In Touch</span>
+          <span class="contact-eyebrow">Book Your Flight</span>
           <h2 class="contact-h2">READY TO ELEVATE YOUR PROJECT?</h2>
-          <p class="contact-body">Book by text or email. We'll get back to you within 24 hours to confirm your date and location.</p>
+          <p class="contact-body">Pick your package and an open date on our booking page. We'll get back to you within 24 hours to confirm your location and flight details.</p>
+          <a href="book/" class="btn contact-btn">Book a Session</a>
           <p class="contact-cert">FAA Part 107 Certified - Based in Mount Vernon &amp; Oxford, OH - Serving Ohio &amp; Beyond</p>
         </div>
 
         <div class="contact-items reveal d1">
+          <span class="contact-eyebrow">Questions? Contact &amp; Follow</span>
           <a href="tel:7405049980" class="contact-item">
             <div class="ci-icon" aria-hidden="true">
               <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
