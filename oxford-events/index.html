@@ -1,0 +1,1594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!--
+    OXFORD EVENTS LANDING PAGE  (/oxford-events/)
+  
+    ── SETTINGS YOU MAY NEED TO CHANGE ──────────────────────────────────────
+    All three live in the first <script> in <head>, right below.
+  
+    CAMPUS_APPROVED  false by default. While false, the "Campus Approved"
+                     trust badge and the "Yes" campus FAQ answer are NOT
+                     rendered (they sit inside <template> tags, so they are
+                     not visible or read as page text). Flip to true once
+                     campus flight approval is confirmed. Insurance is
+                     already shown everywhere and is not behind this flag.
+  
+    FORM_ENDPOINT    Where the booking form posts. Empty = the form opens the
+                     visitor's email app with everything pre-filled to
+                     andrew@altitudeimagesllc.com. Paste a Formspree form URL
+                     (free tier) to get inquiries emailed to you with no
+                     email app step, e.g. 'https://formspree.io/f/abcdwxyz'.
+  
+    HERO_VIDEO       Empty = still image only. Set to '../assets/oxford-hero.mp4'
+                     once that clip exists. Skipped for reduced-motion and
+                     data-saver visitors.
+  
+    ── PLACEHOLDERS ────────────────────────────────────────────────────────
+    TODO(images)  Hero still is ../events.jpg for now.
+    Work tiles     ../assets/work-*.jpg (3 tiles). Add Oxford shots as you get them.
+    TODO(prices)  Package prices are placeholders, search for TODO(prices).
+  -->
+  <script>
+    const CAMPUS_APPROVED = false;   // TODO: flip to true once campus flight approval is confirmed
+    const FORM_ENDPOINT   = '';      // e.g. 'https://formspree.io/f/abcdwxyz'
+    const HERO_VIDEO      = '';      // e.g. '../assets/oxford-hero.mp4'
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oxford OH Event Drone Photo and Video | Altitude Images</title>
+  <meta name="description" content="FAA certified drone photo and video for Miami University orgs and Oxford, OH events. Formals, philanthropy, tailgates and graduation, delivered in 48 hours.">
+  <link rel="canonical" href="https://altitudeimagesllc.com/oxford-events/">
+  <meta name="theme-color" content="#080E1C">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Altitude Images">
+  <meta property="og:url" content="https://altitudeimagesllc.com/oxford-events/">
+  <meta property="og:title" content="Your Event, From Above | Oxford OH Event Drone Photo and Video">
+  <meta property="og:description" content="Drone photo and video for Miami University orgs and Oxford events. Edited, color graded, and in your inbox within 48 hours.">
+  <meta property="og:image" content="https://altitudeimagesllc.com/events.jpg"><!-- TODO(images): swap for the Oxford hero still -->
+  <meta property="og:image:width" content="1400">
+  <meta property="og:image:height" content="1050">
+  <meta property="og:image:alt" content="Elevated view of a swim meet with athletes and spectators lining the pool deck">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Your Event, From Above | Oxford OH Event Drone Photo and Video">
+  <meta name="twitter:description" content="Drone photo and video for Miami University orgs and Oxford events, delivered within 48 hours.">
+  <meta name="twitter:image" content="https://altitudeimagesllc.com/events.jpg">
+
+  <link rel="preload" as="image" href="../events.jpg" fetchpriority="high">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://altitudeimagesllc.com/#business",
+    "name": "Altitude Images LLC",
+    "description": "FAA Part 107 certified, commercially insured drone photo and video for Miami University student organizations and Oxford, Ohio events, edited and delivered within 48 hours.",
+    "url": "https://altitudeimagesllc.com/oxford-events/",
+    "email": "andrew@altitudeimagesllc.com",
+    "telephone": "+1-740-504-9980",
+    "image": "https://altitudeimagesllc.com/events.jpg",
+    "logo": "https://altitudeimagesllc.com/brand/logo-full.webp",
+    "priceRange": "$149 - $249",
+    "foundingDate": "2024-10",
+    "founder": { "@type": "Person", "name": "Andrew Conway", "jobTitle": "Founder and Pilot-in-Command" },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Oxford",
+      "addressRegion": "OH",
+      "postalCode": "45056",
+      "addressCountry": "US"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Oxford, OH 45056" },
+      { "@type": "City", "name": "Mount Vernon, OH" },
+      { "@type": "Place", "name": "Catawba Island, OH" }
+    ],
+    "sameAs": ["https://www.instagram.com/altitudeimagesllc"],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Oxford Event Drone Photo and Video",
+      "itemListElement": [
+        { "@type": "Offer", "price": "149", "priceCurrency": "USD",
+          "itemOffered": { "@type": "Service", "name": "Event Stills", "description": "10 edited aerial event photos delivered in 48 hours." } },
+        { "@type": "Offer", "price": "199", "priceCurrency": "USD",
+          "itemOffered": { "@type": "Service", "name": "Event Reel", "description": "30 to 45 second vertical drone Reel for Instagram and TikTok plus raw clips, delivered in 48 hours." } },
+        { "@type": "Offer", "price": "249", "priceCurrency": "USD",
+          "itemOffered": { "@type": "Service", "name": "Full Coverage", "description": "Event Reel plus 10 edited aerial photos, delivered in 48 hours." } },
+        { "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Graduation drone photography", "areaServed": "Oxford, OH" } },
+        { "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Student organization event drone video", "areaServed": "Oxford, OH" } }
+      ]
+    }
+  }
+  </script>
+
+  <style>
+    /* ─── Tokens (copied from the homepage) ── */
+    :root {
+      --bg:         #080E1C;
+      --surface:    #0F1828;
+      --surface-2:  #141F35;
+      --gold:       #E8A020;
+      --gold-dim:   rgba(232,160,32,0.15);
+      --gold-border:rgba(232,160,32,0.22);
+      --text:       #F0EDE6;
+      --muted:      #7A8FA8;
+      --display:    'Bebas Neue', sans-serif;
+      --body:       'Inter', sans-serif;
+      --nav-h:      68px;
+      --max:        1160px;
+      --ease:       0.3s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img, video { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 2px; }
+
+    .skip {
+      position: absolute; left: 16px; top: -60px; z-index: 300;
+      background: var(--gold); color: var(--bg); font-weight: 600;
+      padding: 10px 16px; border-radius: 3px;
+    }
+    .skip:focus { top: 12px; }
+
+    .wrap {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* Section heading pattern (eyebrow + Bebas title), same as homepage */
+    .eyebrow {
+      display: block;
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .h2 {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(38px, 5vw, 56px);
+      line-height: 1;
+      letter-spacing: 0.02em;
+    }
+    .h2 .g { color: var(--gold); }
+    .lede {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 460px;
+      line-height: 1.7;
+      margin-top: 14px;
+    }
+    .section-head { margin-bottom: 48px; }
+    .section-head.center { text-align: center; }
+    .section-head.center .lede { margin-left: auto; margin-right: auto; }
+
+    section { padding: 96px 0; }
+
+    /* ─── Scroll Reveals ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.d1 { transition-delay: 0.08s; }
+    .reveal.d2 { transition-delay: 0.18s; }
+    .reveal.d3 { transition-delay: 0.28s; }
+    .reveal.in  { opacity: 1; transform: translateY(0); }
+    .no-js .reveal { opacity: 1; transform: none; }
+
+    /* ─── NAV ── */
+    #nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      transition: background var(--ease), box-shadow var(--ease);
+    }
+    #nav.solid {
+      background: rgba(8,14,28,0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 var(--gold-border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+    .nav-logo { display: flex; align-items: center; flex-shrink: 0; }
+    .nav-logo img { display: block; height: 54px; width: auto; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      transition: color var(--ease);
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--bg) !important;
+      background: var(--gold);
+      padding: 9px 22px;
+      border-radius: 3px;
+      transition: background var(--ease), transform var(--ease) !important;
+    }
+    .nav-cta:hover { background: #f5b030 !important; transform: translateY(-1px); }
+
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 44px;
+      height: 44px;
+      margin-right: -7px;
+      padding: 0 7px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    .nav-burger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 0.26s ease, opacity 0.26s ease;
+    }
+    .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      inset: var(--nav-h) 0 auto;
+      z-index: 99;
+      background: rgba(8,14,28,0.98);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--gold-border);
+      padding: 28px 32px 36px;
+    }
+    .nav-drawer.open { display: block; }
+    .nav-drawer ul { list-style: none; }
+    .nav-drawer ul li + li { margin-top: 2px; }
+    .nav-drawer ul a {
+      display: block;
+      font-family: var(--display);
+      font-size: 32px;
+      letter-spacing: 0.03em;
+      color: var(--text);
+      padding: 8px 0;
+      transition: color var(--ease);
+    }
+    .nav-drawer ul a:hover { color: var(--gold); }
+
+    /* ─── HERO ── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: calc(var(--nav-h) + 48px) 0 96px;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .hero-media,
+    .hero-media img,
+    .hero-media video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 45%;
+      z-index: -2;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(
+        to bottom,
+        rgba(8,14,28,0.55) 0%,
+        rgba(8,14,28,0.35) 30%,
+        rgba(8,14,28,0.75) 65%,
+        rgba(8,14,28,0.96) 100%
+      );
+    }
+    .hero-content {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 32px;
+      width: 100%;
+    }
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+    .hero-label::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.6;
+    }
+    .hero-h1 {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(72px, 11vw, 120px);
+      line-height: 0.93;
+      letter-spacing: 0.01em;
+      margin-bottom: 22px;
+    }
+    .hero-h1 .g { color: var(--gold); display: block; }
+    .hero-sub {
+      font-size: 17px;
+      font-weight: 300;
+      color: #C9D2DE;
+      max-width: 460px;
+      line-height: 1.65;
+      margin-bottom: 32px;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: var(--body);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--gold);
+      padding: 15px 36px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background var(--ease), transform var(--ease);
+    }
+    .btn:hover { background: #f5b030; transform: translateY(-2px); }
+    .btn:disabled { opacity: 0.6; cursor: wait; transform: none; }
+
+    .link-ghost {
+      font-size: 13.5px;
+      color: #C9D2DE;
+      padding: 12px 0;
+      transition: color var(--ease);
+    }
+    .link-ghost:hover { color: var(--text); }
+
+    /* ─── TRUST BAR ── */
+    #trust {
+      padding: 0;
+      background: var(--surface);
+      border-top: 1px solid var(--gold-border);
+      border-bottom: 1px solid var(--gold-border);
+    }
+    .trust-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .trust-item {
+      flex: 1 1 0;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 18px 20px;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text);
+      border-right: 1px solid rgba(255,255,255,0.06);
+      text-align: left;
+    }
+    .trust-item:last-child { border-right: none; }
+    .trust-item svg { color: var(--gold); flex-shrink: 0; }
+
+    /* ─── EVENTS GRID ── */
+    #events { background: var(--bg); }
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .event {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 28px 26px;
+      position: relative;
+      transition: border-color var(--ease);
+    }
+    .event:hover { border-color: var(--gold-border); }
+    .event::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 28px; bottom: 28px;
+      width: 2px;
+      background: var(--gold);
+      opacity: 0.7;
+    }
+    .event h3 {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: 26px;
+      letter-spacing: 0.03em;
+      line-height: 1.05;
+      margin-bottom: 8px;
+    }
+    .event p {
+      font-size: 14.5px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ─── PACKAGES (homepage pricing card style) ── */
+    #packages {
+      background: var(--surface);
+      position: relative;
+      overflow: hidden;
+    }
+    #packages::before {
+      content: 'EVENTS';
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--display);
+      font-size: clamp(100px, 16vw, 200px);
+      letter-spacing: 0.05em;
+      color: rgba(232,160,32,0.03);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      position: relative;
+    }
+    .card {
+      background: var(--bg);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 40px 34px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.14); }
+    .card.featured {
+      border-color: var(--gold);
+      border-width: 2px;
+      background: linear-gradient(160deg, #0F1828 0%, #0B1422 100%);
+    }
+    .card.featured:hover { border-color: var(--gold); }
+    .card-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      background: var(--gold);
+      color: var(--bg);
+      padding: 4px 16px;
+      white-space: nowrap;
+    }
+    .card-pkg {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: 19px;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .card-price {
+      font-family: var(--display);
+      font-size: clamp(60px, 6vw, 80px);
+      color: var(--gold);
+      line-height: 1;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: flex-start;
+      gap: 2px;
+      margin-bottom: 28px;
+    }
+    .card-price sup {
+      font-family: var(--body);
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+    .card-hr { height: 1px; background: var(--gold-border); margin-bottom: 24px; }
+    .card-features { list-style: none; margin-bottom: 32px; flex: 1; }
+    .card-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text);
+      padding: 6px 0;
+    }
+    .card-features li::before {
+      content: '-';
+      color: var(--gold);
+      flex-shrink: 0;
+      font-weight: 300;
+      margin-top: 1px;
+    }
+    .card-link {
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 0;
+      transition: gap 0.25s ease, opacity 0.25s ease;
+    }
+    .card-link:hover { gap: 10px; opacity: 0.75; }
+    .semester-note {
+      position: relative;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--muted);
+      margin-top: 36px;
+    }
+    .semester-note a { color: var(--gold); font-style: normal; font-weight: 500; }
+
+    /* ─── HOW IT WORKS (homepage step style) ── */
+    #process { background: var(--bg); }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); list-style: none; }
+    .step { padding: 0 44px 0 0; border-right: 1px solid var(--gold-border); }
+    .step:not(:first-child) { padding-left: 44px; }
+    .step:last-child { border-right: none; padding-right: 0; }
+    .step-num {
+      font-family: var(--display);
+      font-size: 80px;
+      line-height: 1;
+      color: rgba(232,160,32,0.12);
+      letter-spacing: -0.02em;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .step-title {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: 28px;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    .step-body {
+      font-size: 14.5px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* ─── RECENT WORK ── */
+    #work { background: var(--surface); }
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .work-tile {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(232,160,32,0.10), transparent 60%),
+        var(--surface-2);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .work-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+    .work-tile:hover img { transform: scale(1.05); }
+    .work-tile figcaption {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      padding: 28px 18px 14px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: linear-gradient(to top, rgba(8,14,28,0.9), transparent);
+    }
+    /* Shown only when the placeholder image file is missing */
+    .work-tile .soon {
+      display: none;
+      position: absolute;
+      inset: 0;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--display);
+      font-size: 22px;
+      letter-spacing: 0.06em;
+      color: rgba(240,237,230,0.35);
+    }
+    .work-tile.missing .soon { display: flex; }
+    .work-tile.missing img { display: none; }
+    .work-tile.video { grid-column: span 2; aspect-ratio: 16 / 9; }
+    .work-tile.video video,
+    .work-tile.video iframe { width: 100%; height: 100%; border: 0; object-fit: cover; }
+
+    /* ─── ABOUT ── */
+    #about { background: var(--bg); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .about-photo {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border: 1px solid var(--gold-border);
+      background: var(--surface-2);
+    }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .about-h2 { margin-bottom: 24px; }
+    .about-quote {
+      font-size: clamp(18px, 2vw, 21px);
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--text);
+      border-left: 2px solid var(--gold);
+      padding-left: 28px;
+    }
+    .about-sign {
+      margin-top: 20px;
+      padding-left: 30px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ─── TESTIMONIALS (unused until real quotes exist) ── */
+    .quote-card {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 28px;
+    }
+
+    /* ─── FAQ ── */
+    #faq { background: var(--surface); }
+    .faq-list { max-width: 780px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .faq-item:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px 4px;
+      font-size: 16.5px;
+      font-weight: 500;
+      color: var(--text);
+      transition: color var(--ease);
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary:hover { color: var(--gold); }
+    .faq-item summary::after {
+      content: '+';
+      font-family: var(--display);
+      font-size: 30px;
+      line-height: 1;
+      color: var(--gold);
+      flex-shrink: 0;
+      transition: transform 0.25s ease;
+    }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-answer {
+      padding: 0 4px 24px;
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 680px;
+    }
+
+    /* ─── BOOKING FORM ── */
+    #book { background: var(--bg); }
+    .book-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .book-aside .lede { max-width: 360px; }
+    .book-contact {
+      margin-top: 28px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+    .book-contact a { color: var(--text); border-bottom: 1px solid var(--gold-border); }
+    .book-contact a:hover { color: var(--gold); }
+
+    form {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 36px;
+    }
+    .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+    .field.full { grid-column: 1 / -1; }
+    .field label,
+    .field legend {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+    .field .opt { color: var(--muted); font-weight: 400; letter-spacing: 0.04em; text-transform: none; }
+    .field .req { color: var(--gold); }
+    .hint { font-size: 12.5px; color: var(--muted); }
+
+    input[type="text"], input[type="email"], input[type="tel"], input[type="date"],
+    select, textarea {
+      width: 100%;
+      font-family: var(--body);
+      font-size: 16px;               /* 16px stops iOS zooming into the field */
+      color: var(--text);
+      background: var(--bg);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 3px;
+      padding: 13px 14px;
+      min-height: 48px;
+      transition: border-color var(--ease), box-shadow var(--ease);
+      color-scheme: dark;
+    }
+    textarea { min-height: 110px; resize: vertical; line-height: 1.5; }
+    select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23E8A020' stroke-width='1.6' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+    }
+    input:hover, select:hover, textarea:hover { border-color: rgba(255,255,255,0.24); }
+    input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(232,160,32,0.25);
+    }
+    .was-validated input:invalid,
+    .was-validated select:invalid { border-color: #E5735C; }
+
+    fieldset.field { border: none; }
+    .radios { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 2px; }
+    .field label.radio { position: relative; text-transform: none; letter-spacing: normal; font-weight: 500; }
+    .radio input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; cursor: pointer; margin: 0; }
+    .radio span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 48px;
+      padding: 10px 8px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--muted);
+      background: var(--bg);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 3px;
+      transition: border-color var(--ease), color var(--ease), background var(--ease);
+    }
+    .radio input:hover + span { border-color: rgba(255,255,255,0.24); }
+    .radio input:checked + span { color: var(--text); border-color: var(--gold); background: var(--surface-2); }
+    .radio input:focus-visible + span { box-shadow: 0 0 0 3px rgba(232,160,32,0.35); border-color: var(--gold); }
+
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+    .form-foot { margin-top: 28px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .form-note { font-size: 12.5px; color: var(--muted); }
+
+    .form-status {
+      margin-top: 20px;
+      padding: 16px 18px;
+      border-radius: 3px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .form-status[hidden] { display: none; }
+    .form-status.ok { background: var(--gold-dim); border: 1px solid var(--gold-border); color: var(--text); }
+    .form-status.err { background: rgba(229,115,92,0.12); border: 1px solid rgba(229,115,92,0.4); color: var(--text); }
+    .form-status a { color: var(--gold); border-bottom: 1px solid currentColor; }
+
+    /* ─── FOOTER (homepage footer) ── */
+    footer {
+      border-top: 1px solid var(--gold-border);
+      padding: 36px 0;
+      background: var(--surface);
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .footer-logo { display: block; flex-shrink: 0; }
+    .footer-logo img { display: block; height: 104px; width: auto; }
+    .footer-right {
+      font-size: 11.5px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-align: right;
+      line-height: 1.8;
+    }
+    .footer-right a:hover { color: var(--gold); }
+
+    /* ─── STICKY MOBILE CTA ── */
+    .sticky-cta {
+      display: none;
+      position: fixed;
+      left: 16px; right: 16px;
+      bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+      z-index: 90;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+      transform: translateY(140%);
+      transition: transform 0.3s ease;
+    }
+    .sticky-cta.show { transform: translateY(0); }
+
+    /* ─── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .events-grid { grid-template-columns: repeat(2, 1fr); }
+      .book-grid, .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 72px 0; }
+      .wrap, .nav-inner, .hero-content { padding: 0 20px; }
+      .nav-drawer { padding: 20px 20px 28px; }
+      .nav-links  { display: none; }
+      .nav-burger { display: flex; }
+      .nav-logo img { height: 46px; }
+
+      #hero { padding-bottom: 64px; }
+
+      .trust-list { display: grid; grid-template-columns: 1fr 1fr; }
+      .trust-item {
+        justify-content: flex-start;
+        padding: 14px 16px;
+        font-size: 10.5px;
+        letter-spacing: 0.1em;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+      }
+      .trust-item:nth-child(even) { border-right: none; }
+      .trust-item:last-child:nth-child(odd) { grid-column: 1 / -1; border-right: none; justify-content: center; }
+
+      .steps { grid-template-columns: 1fr; }
+      .step {
+        padding: 0 0 40px 28px !important;
+        border-right: none !important;
+        border-left: 2px solid var(--gold-border);
+        position: relative;
+      }
+      .step:last-child { padding-bottom: 0 !important; }
+      .step::before {
+        content: '';
+        position: absolute;
+        top: 16px; left: -5px;
+        width: 8px; height: 8px;
+        background: var(--gold);
+        border-radius: 50%;
+      }
+      .step-num { font-size: 52px; }
+
+      .cards { grid-template-columns: 1fr; }
+      .card.featured { order: -1; margin-top: 20px; }
+
+      .work-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .work-tile .soon { font-size: 16px; }
+      .work-tile:last-child:nth-child(odd) { grid-column: 1 / -1; }
+      .work-tile figcaption { padding: 20px 12px 10px; }
+
+      form { padding: 24px 20px; }
+      .fields { grid-template-columns: 1fr; }
+      .radios { grid-template-columns: 1fr 1fr; }
+
+      .footer-inner { flex-direction: column; text-align: center; gap: 14px; }
+      .footer-right { text-align: center; }
+      .footer-logo img { height: 88px; }
+      footer { padding-bottom: 104px; } /* room for the sticky button */
+
+      .sticky-cta { display: block; }
+    }
+
+    @media (max-width: 520px) {
+      .events-grid { grid-template-columns: 1fr; }
+      .work-tile.video { grid-column: 1 / -1; }
+      .hero-actions { gap: 12px 24px; }
+      .hero-actions .btn { width: 100%; text-align: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+      .card:hover, .btn:hover, .work-tile:hover img { transform: none; }
+    }
+  </style>
+</head>
+<body class="no-js">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- NAV -->
+  <nav id="nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="../" class="nav-logo" aria-label="Altitude Images home">
+        <img src="../brand/logo-nav.webp" width="169" height="54" alt="Altitude Images">
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#events">Events</a></li>
+        <li><a href="#packages">Packages</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#book" class="nav-cta">Check Your Date</a></li>
+      </ul>
+
+      <button class="nav-burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-drawer" id="drawer" hidden>
+    <ul>
+      <li><a href="#events"   class="drawer-link">Events</a></li>
+      <li><a href="#packages" class="drawer-link">Packages</a></li>
+      <li><a href="#work"     class="drawer-link">Work</a></li>
+      <li><a href="#faq"      class="drawer-link">FAQ</a></li>
+      <li><a href="#book"     class="drawer-link">Check Your Date</a></li>
+      <li><a href="../"       class="drawer-link">Altitude Images Home</a></li>
+    </ul>
+  </div>
+
+  <main id="main">
+
+    <!-- 1. HERO -->
+    <section id="hero" aria-labelledby="hero-title">
+      <div class="hero-media" id="hero-media">
+        <!-- TODO(images): replace with the Oxford hero still once chosen.
+             Optional looping video: set HERO_VIDEO at the top of this file to '../assets/oxford-hero.mp4'. -->
+        <img src="../events.jpg" width="1400" height="1050" fetchpriority="high" decoding="async"
+             alt="Elevated view of a swim meet with athletes and spectators lining the pool deck">
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-label">Oxford, OH &middot; Miami University Orgs</div>
+        <h1 class="hero-h1" id="hero-title">Your Event, <span class="g">From Above.</span></h1>
+        <p class="hero-sub">Drone photo and video for Miami University orgs and Oxford events. Edited, color graded, and in your inbox within 48 hours.</p>
+        <div class="hero-actions">
+          <a href="#book" class="btn">Check Your Date</a>
+          <a href="#packages" class="link-ghost">See Packages &darr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. TRUST BAR -->
+    <section id="trust" aria-label="Credentials">
+      <ul class="trust-list" id="trust-list">
+        <li class="trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2 3 6v6c0 5.25 3.84 10.16 9 11 5.16-.84 9-5.75 9-11V6l-9-4zm-1.2 14.6-3.9-3.9 1.4-1.4 2.5 2.5 5.3-5.3 1.4 1.4-6.7 6.7z"/></svg>
+          FAA Part 107 Certified Pilot
+        </li>
+        <li class="trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 10.4 3.5 2.1-.8 1.3L11 13V7h2v5.4z"/></svg>
+          48-Hour Delivery
+        </li>
+        <li class="trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 5h3l2-2h6l2 2h3a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm8 3.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9z"/></svg>
+          20+ Shoots Delivered
+        </li>
+        <li class="trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2 3 6v6c0 5.25 3.84 10.16 9 11 5.16-.84 9-5.75 9-11V6l-9-4zm0 4a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm0 14c-2.2-.7-4-2.4-4.9-4.6 1.2-1 3-1.6 4.9-1.6s3.7.6 4.9 1.6c-.9 2.2-2.7 3.9-4.9 4.6z"/></svg>
+          Commercially Insured
+        </li>
+        <!-- 5th badge ("Campus Approved") is injected from
+             #tpl-trust-campus only when CAMPUS_APPROVED is true. -->
+      </ul>
+    </section>
+
+    <template id="tpl-trust-campus">
+      <li class="trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zM5 13.2v4L12 21l7-3.8v-4L12 17l-7-3.8z"/></svg>
+        Campus Approved
+      </li>
+    </template>
+
+    <!-- 3. EVENT TYPES -->
+    <section id="events" aria-labelledby="events-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">Built for Event Days</span>
+          <h2 class="h2" id="events-title">Aerials for Miami University <span class="g">Org Events</span></h2>
+          <p class="lede">Greek life, club sports, fundraisers, departments and Oxford businesses. If it happens outside, it looks better from above.</p>
+        </div>
+
+        <div class="events-grid">
+          <article class="event reveal d1">
+            <h3>Formals and Date Parties</h3>
+            <p>The group shot nobody else can get.</p>
+          </article>
+          <article class="event reveal d2">
+            <h3>Philanthropy and Fundraisers</h3>
+            <p>Show the turnout, grow next year's. Great for MUSF events and the Bike Race.</p>
+          </article>
+          <article class="event reveal d3">
+            <h3>Bid Day and Recruitment</h3>
+            <p>Content that makes the next class want in.</p>
+          </article>
+          <article class="event reveal d1">
+            <h3>Tailgates and Homecoming</h3>
+            <p>The whole crowd in one frame. Family Weekend too.</p>
+          </article>
+          <article class="event reveal d2">
+            <h3>Club Sports and Races</h3>
+            <p>Tracking shots that look like TV.</p>
+          </article>
+          <article class="event reveal d3">
+            <h3>Graduation</h3>
+            <p>Campus from above, for the family album. Parents welcome to book.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. PACKAGES -->
+    <!-- TODO(prices): $149 / $199 / $249 are placeholders. Confirm before launch
+         (also update the matching "price" values in the JSON-LD in <head>). -->
+    <section id="packages" aria-labelledby="packages-title">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Packages</span>
+          <h2 class="h2" id="packages-title">Oxford Event Drone Video <span class="g">and Photo</span></h2>
+          <p class="lede">Every package is edited, color graded and delivered within 48 hours, ready to post.</p>
+        </div>
+
+        <div class="cards">
+          <div class="card reveal d1">
+            <h3 class="card-pkg">Event Stills</h3>
+            <div class="card-price"><sup>$</sup>149</div><!-- TODO(prices) -->
+            <div class="card-hr"></div>
+            <ul class="card-features">
+              <li>10 edited aerial photos</li>
+              <li>Color graded in Lightroom</li>
+              <li>Delivered in 48 hours</li>
+            </ul>
+            <a href="#book" class="card-link" data-pkg="Stills">Book Event Stills &rarr;</a>
+          </div>
+
+          <div class="card reveal d2">
+            <h3 class="card-pkg">Event Reel</h3>
+            <div class="card-price"><sup>$</sup>199</div><!-- TODO(prices) -->
+            <div class="card-hr"></div>
+            <ul class="card-features">
+              <li>30 to 45 second vertical Reel</li>
+              <li>Cut for Instagram and TikTok</li>
+              <li>Raw clips included</li>
+              <li>Delivered in 48 hours</li>
+            </ul>
+            <a href="#book" class="card-link" data-pkg="Reel">Book Event Reel &rarr;</a>
+          </div>
+
+          <div class="card featured reveal d3">
+            <div class="card-badge">Most Popular</div>
+            <h3 class="card-pkg">Full Coverage</h3>
+            <div class="card-price"><sup>$</sup>249</div><!-- TODO(prices) -->
+            <div class="card-hr"></div>
+            <ul class="card-features">
+              <li>Vertical Reel plus raw clips</li>
+              <li>10 edited aerial photos</li>
+              <li>Delivered in 48 hours</li>
+            </ul>
+            <a href="#book" class="card-link" data-pkg="Full Coverage">Book Full Coverage &rarr;</a>
+          </div>
+        </div>
+
+        <p class="semester-note reveal">Running multiple events this semester? <a href="#book" data-pkg="Not sure" data-note="Interested in a semester package for our org.">Ask about a semester package</a> for your org.</p>
+      </div>
+    </section>
+
+    <!-- 5. HOW IT WORKS -->
+    <section id="process" aria-labelledby="process-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">How It Works</span>
+          <h2 class="h2" id="process-title">Booked in a Message, <span class="g">Posted in 48 Hours</span></h2>
+        </div>
+
+        <ol class="steps">
+          <li class="step reveal d1">
+            <span class="step-num" aria-hidden="true">01</span>
+            <h3 class="step-title">Send Your Date</h3>
+            <p class="step-body">Tell me the event, location and what you want to post.</p>
+          </li>
+          <li class="step reveal d2">
+            <span class="step-num" aria-hidden="true">02</span>
+            <h3 class="step-title">I Handle the Flight</h3>
+            <p class="step-body">Airspace checks, permissions and weather calls are on me.</p>
+          </li>
+          <li class="step reveal d3">
+            <span class="step-num" aria-hidden="true">03</span>
+            <h3 class="step-title">Post Within 48 Hours</h3>
+            <p class="step-body">Edited files land in a shared folder ready to upload.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 6. RECENT WORK -->
+    <!-- Work tiles use real shoots from the portfolio drive. Swap in Oxford shots as they come.
+         A tile shows a "Photo coming soon" panel if its file is missing. -->
+    <section id="work" aria-labelledby="work-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">Recent Work</span>
+          <h2 class="h2" id="work-title">Event Days <span class="g">From Above</span></h2>
+        </div>
+
+        <div class="work-grid">
+          <!-- Optional video tile. Uncomment and set the src/poster once a clip is ready.
+               preload="none" keeps it from loading until played.
+          <figure class="work-tile video">
+            <video controls preload="none" playsinline poster="../assets/oxford-work-video-poster.jpg"
+                   aria-label="Drone video of a student org event in Oxford, Ohio">
+              <source src="../assets/oxford-work-video.mp4" type="video/mp4">
+            </video>
+          </figure>
+          Or a YouTube / Instagram embed:
+          <figure class="work-tile video">
+            <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" title="Drone Reel of an Oxford event"
+                    loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
+          </figure>
+          -->
+
+          <figure class="work-tile reveal d1">
+            <img src="../assets/work-game-day.jpg" width="1000" height="750" loading="lazy" decoding="async"
+                 alt="Aerial view of a high school stadium during a track meet, with spectators in the stands and a full parking lot">
+            <span class="soon" aria-hidden="true">Photo coming soon</span>
+            <figcaption>Game Day</figcaption>
+          </figure>
+          <figure class="work-tile reveal d2">
+            <img src="../assets/work-club-sports.jpg" width="1000" height="750" loading="lazy" decoding="async"
+                 alt="Drone photo of two soccer teams gathered on a lit turf field after a night game">
+            <span class="soon" aria-hidden="true">Photo coming soon</span>
+            <figcaption>Soccer</figcaption>
+          </figure>
+          <figure class="work-tile reveal d3">
+            <img src="../assets/work-track-day.jpg" width="1000" height="750" loading="lazy" decoding="async"
+                 alt="Drone tracking shot of a yellow sports car cornering on a racetrack during a track day">
+            <span class="soon" aria-hidden="true">Photo coming soon</span>
+            <figcaption>Track Day</figcaption>
+          </figure>
+          <!-- Add more tiles here as you shoot Oxford events (formals, philanthropy, graduation).
+               Copy a <figure> above, keep files 4:3, about 1000x750 and under 250 KB. -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. ABOUT -->
+    <section id="about" aria-labelledby="about-title">
+      <div class="wrap">
+        <div class="about-grid">
+          <figure class="about-photo reveal">
+            <img src="../assets/about-drone.jpg" width="1200" height="900" loading="lazy" decoding="async"
+                 alt="Altitude Images DJI Air 3S drone resting on a turf football field before a flight">
+          </figure>
+          <div class="reveal d1">
+            <h2 class="h2 about-h2" id="about-title">About <span class="g">Me</span></h2>
+            <p class="about-quote">I'm Andrew, a Miami student and FAA certified drone pilot. I started Altitude Images in 2024 and founded the Miami University Drone Club in 2026, so I know campus, I know the airspace, and I know what your org actually wants to post.</p>
+            <p class="about-sign">Andrew Conway &middot; Founder and Pilot-in-Command</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS: left empty on purpose. Only add real quotes from real clients,
+         with their permission. Uncomment and fill in.
+    <section id="testimonials" aria-labelledby="testimonials-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">What Orgs Say</span>
+          <h2 class="h2" id="testimonials-title">From the Group Chat</h2>
+        </div>
+        <div class="events-grid">
+          <blockquote class="quote-card">
+            <p class="step-body">"QUOTE"</p>
+            <footer class="about-sign">NAME, ORGANIZATION</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+    -->
+
+    <!-- 8. FAQ -->
+    <section id="faq" aria-labelledby="faq-title">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <span class="eyebrow">FAQ</span>
+          <h2 class="h2" id="faq-title">Questions From <span class="g">Org Leaders</span></h2>
+        </div>
+
+        <div class="faq-list reveal">
+          <details class="faq-item">
+            <summary>Can you fly on campus?</summary>
+            <!-- Default answer. Replaced by #tpl-faq-campus when CAMPUS_APPROVED is true. -->
+            <div class="faq-answer" id="faq-campus-answer">
+              I'm commercially insured and handle airspace and permissions for every location. I'll confirm what's possible for your venue before you book.
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>What if it rains or it's too windy?</summary>
+            <div class="faq-answer">Free reschedule, or a full refund if we can't find a new date.</div>
+          </details>
+          <details class="faq-item">
+            <summary>How far ahead should we book?</summary>
+            <div class="faq-answer">On-campus events need at least two weeks' notice to get university flight approval. For off-campus events, two weeks is ideal, but message me even if your event is this weekend.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Do you fly over crowds?</summary>
+            <div class="faq-answer">I follow FAA rules on flying over people and plan shots to keep everyone safe. The footage still looks great.</div>
+          </details>
+          <details class="faq-item">
+            <summary>How do we pay?</summary>
+            <div class="faq-answer">Venmo or check payable to Altitude Images LLC, due within 15 days of delivery.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <template id="tpl-faq-campus">
+      Yes. I'm commercially insured and I coordinate flight approval with the university for campus events, so your org doesn't have to.
+    </template>
+
+    <!-- 9. BOOKING FORM -->
+    <section id="book" aria-labelledby="book-title">
+      <div class="wrap">
+        <div class="book-grid">
+          <div class="book-aside reveal">
+            <span class="eyebrow">Check Your Date</span>
+            <h2 class="h2" id="book-title">Book Drone Coverage <span class="g">in Oxford</span></h2>
+            <p class="lede">Send the basics and I'll reply within 24 hours to confirm availability. No payment until after delivery.</p>
+            <p class="book-contact">
+              Rather text? <a href="tel:7405049980">740-504-9980</a><br>
+              Email <a href="mailto:andrew@altitudeimagesllc.com">andrew@altitudeimagesllc.com</a><br>
+              Instagram <a href="https://www.instagram.com/altitudeimagesllc" target="_blank" rel="noopener noreferrer">@altitudeimagesllc</a>
+            </p>
+          </div>
+
+          <form id="book-form" class="reveal d1" novalidate>
+            <div class="fields">
+              <div class="field">
+                <label for="f-name">Name <span class="req" aria-hidden="true">*</span></label>
+                <input id="f-name" name="name" type="text" autocomplete="name" required>
+              </div>
+              <div class="field">
+                <label for="f-org">Organization <span class="req" aria-hidden="true">*</span></label>
+                <input id="f-org" name="organization" type="text" autocomplete="organization" required>
+              </div>
+              <div class="field">
+                <label for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
+                <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required>
+              </div>
+              <div class="field">
+                <label for="f-phone">Phone <span class="opt">(optional)</span></label>
+                <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+              </div>
+              <div class="field">
+                <label for="f-type">Event type</label>
+                <select id="f-type" name="event_type">
+                  <option value="">Choose one</option>
+                  <option>Formal or Date Party</option>
+                  <option>Philanthropy or Fundraiser</option>
+                  <option>Bid Day or Recruitment</option>
+                  <option>Tailgate or Homecoming</option>
+                  <option>Club Sports or Race</option>
+                  <option>Graduation</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="f-date">Event date</label>
+                <input id="f-date" name="event_date" type="date" aria-describedby="f-date-hint">
+                <span class="hint" id="f-date-hint">On-campus events need two weeks' notice for university flight approval.</span>
+              </div>
+              <div class="field full">
+                <label for="f-loc">Location</label>
+                <input id="f-loc" name="location" type="text" aria-describedby="f-loc-hint">
+                <span class="hint" id="f-loc-hint">Uptown, campus, venue name</span>
+              </div>
+              <fieldset class="field full">
+                <legend>Package interest</legend>
+                <div class="radios">
+                  <label class="radio"><input type="radio" name="package" value="Stills"><span>Stills</span></label>
+                  <label class="radio"><input type="radio" name="package" value="Reel"><span>Reel</span></label>
+                  <label class="radio"><input type="radio" name="package" value="Full Coverage"><span>Full Coverage</span></label>
+                  <label class="radio"><input type="radio" name="package" value="Not sure" checked><span>Not sure</span></label>
+                </div>
+              </fieldset>
+              <div class="field full">
+                <label for="f-msg">Anything else <span class="opt">(optional)</span></label>
+                <textarea id="f-msg" name="message" placeholder="Shots you want, where it'll be posted, timing"></textarea>
+              </div>
+              <!-- Spam trap. Real visitors never see or fill this. -->
+              <div class="hp" aria-hidden="true">
+                <label for="f-gotcha">Leave this empty</label>
+                <input id="f-gotcha" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+              </div>
+            </div>
+
+            <div class="form-foot">
+              <button type="submit" class="btn" id="f-submit">Check My Date</button>
+              <span class="form-note">Replies within 24 hours.</span>
+            </div>
+
+            <div class="form-status" id="form-status" role="status" aria-live="polite" tabindex="-1" hidden></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <a href="../" class="footer-logo" aria-label="Altitude Images home">
+          <img src="../brand/logo-full.webp" width="326" height="104" alt="Altitude Images - Aerial Imaging Solutions" loading="lazy">
+        </a>
+        <span class="footer-right">
+          &copy; 2026 Altitude Images LLC - FAA Part 107 Certified &amp; Commercially Insured<br>
+          Serving Oxford, OH, Mount Vernon, OH and Catawba Island, OH<br>
+          <a href="mailto:andrew@altitudeimagesllc.com">andrew@altitudeimagesllc.com</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#book" class="btn sticky-cta" id="sticky-cta" tabindex="-1" aria-hidden="true">Check Your Date</a>
+
+  <script>
+    document.body.classList.remove('no-js');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ── CAMPUS_APPROVED flag ── */
+    if (CAMPUS_APPROVED) {
+      document.getElementById('trust-list')
+        .appendChild(document.getElementById('tpl-trust-campus').content.cloneNode(true));
+      document.getElementById('faq-campus-answer').textContent =
+        document.getElementById('tpl-faq-campus').content.textContent.trim();
+    }
+
+    /* ── Optional hero video ── */
+    const saveData = navigator.connection && navigator.connection.saveData;
+    if (HERO_VIDEO && !reduceMotion && !saveData) {
+      const media = document.getElementById('hero-media');
+      const still = media.querySelector('img');
+      const v = document.createElement('video');
+      Object.assign(v, { muted: true, loop: true, autoplay: true, playsInline: true, preload: 'none', poster: still.currentSrc || still.src });
+      v.setAttribute('aria-hidden', 'true');
+      v.src = HERO_VIDEO;
+      v.addEventListener('canplay', () => still.remove(), { once: true });
+      media.appendChild(v);
+    }
+
+    /* ── Missing portfolio images show a placeholder panel ── */
+    document.querySelectorAll('.work-tile img').forEach(img => {
+      const mark = () => img.closest('.work-tile').classList.add('missing');
+      if (img.complete && img.naturalWidth === 0 && img.getAttribute('src')) mark();
+      img.addEventListener('error', mark, { once: true });
+    });
+
+    /* ── Nav solid on scroll ── */
+    const nav = document.getElementById('nav');
+    const onScroll = () => nav.classList.toggle('solid', window.scrollY > 24);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* ── Hamburger ── */
+    const burger = document.getElementById('burger');
+    const drawer = document.getElementById('drawer');
+    function setDrawer(open) {
+      burger.classList.toggle('open', open);
+      drawer.classList.toggle('open', open);
+      drawer.hidden = !open;
+      burger.setAttribute('aria-expanded', String(open));
+      burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+    burger.addEventListener('click', () => setDrawer(!drawer.classList.contains('open')));
+    document.querySelectorAll('.drawer-link').forEach(l => l.addEventListener('click', () => setDrawer(false)));
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && drawer.classList.contains('open')) { setDrawer(false); burger.focus(); }
+    });
+
+    /* ── Scroll reveal ── */
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    }
+
+    /* ── Package links preselect the form ── */
+    const form = document.getElementById('book-form');
+    document.querySelectorAll('[data-pkg]').forEach(a => {
+      a.addEventListener('click', () => {
+        const r = form.querySelector(`input[name="package"][value="${a.dataset.pkg}"]`);
+        if (r) r.checked = true;
+        if (a.dataset.note && !form.message.value) form.message.value = a.dataset.note;
+      });
+    });
+
+    /* ── Sticky mobile CTA: visible after the hero, hidden while the form is on screen ── */
+    const sticky = document.getElementById('sticky-cta');
+    let pastHero = false, formVisible = false;
+    const updateSticky = () => {
+      const show = pastHero && !formVisible;
+      sticky.classList.toggle('show', show);
+      sticky.setAttribute('aria-hidden', String(!show));
+      sticky.tabIndex = show ? 0 : -1;
+    };
+    new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting; updateSticky(); })
+      .observe(document.getElementById('hero'));
+    new IntersectionObserver(([e]) => { formVisible = e.isIntersecting; updateSticky(); })
+      .observe(document.getElementById('book'));
+
+    /* ── Booking form ── */
+    const status = document.getElementById('form-status');
+    const submit = document.getElementById('f-submit');
+    const SUCCESS = "Got it. I'll reply within 24 hours to confirm availability.";
+    const EMAIL = 'andrew@altitudeimagesllc.com';
+
+    function showStatus(kind, html) {
+      status.className = 'form-status ' + kind;
+      status.innerHTML = html;
+      status.hidden = false;
+      status.focus({ preventScroll: true });
+      status.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest' });
+    }
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      form.classList.add('was-validated');
+      if (!form.checkValidity()) {
+        const first = form.querySelector(':invalid');
+        first.focus();
+        first.reportValidity();
+        return;
+      }
+      if (form._gotcha.value) return; // bot
+
+      const data = new FormData(form);
+      data.append('_subject', `Oxford event inquiry: ${data.get('organization')}`);
+      data.append('page', location.href);
+
+      if (!FORM_ENDPOINT) {
+        // No form service connected yet. Open the visitor's email app with everything filled in.
+        const lines = [
+          ['Name', 'name'], ['Organization', 'organization'], ['Email', 'email'], ['Phone', 'phone'],
+          ['Event type', 'event_type'], ['Event date', 'event_date'], ['Location', 'location'],
+          ['Package', 'package'], ['Notes', 'message']
+        ].map(([label, key]) => `${label}: ${data.get(key) || '-'}`).join('\n');
+        location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(data.get('_subject'))}&body=${encodeURIComponent(lines)}`;
+        showStatus('ok', `Your email app should open with everything filled in. Hit send and I'll reply within 24 hours. If nothing opened, email <a href="mailto:${EMAIL}">${EMAIL}</a>.`);
+        return;
+      }
+
+      submit.disabled = true;
+      submit.textContent = 'Sending...';
+      try {
+        const res = await fetch(FORM_ENDPOINT, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+        if (!res.ok) throw new Error(res.status);
+        form.reset();
+        form.classList.remove('was-validated');
+        showStatus('ok', SUCCESS);
+      } catch (err) {
+        showStatus('err', `Something went wrong sending that. Please email <a href="mailto:${EMAIL}">${EMAIL}</a> or text 740-504-9980.`);
+      } finally {
+        submit.disabled = false;
+        submit.textContent = 'Check My Date';
+      }
+    });
+  </script>
+</body>
+</html>
